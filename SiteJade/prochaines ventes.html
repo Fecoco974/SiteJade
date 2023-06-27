@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Présentation de sacs cabas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: rgb(31, 127, 175) ;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: cursive;
+      font-size: 50px bolder;
+      color: rgb(227, 156, 42);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      width: 300px;
+      margin: 20px;
+      padding: 20px;
+      border: 7px solid yellow;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      background-color: #c11a6d;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #888888;
+    }
+    
+    .card img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ccc;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .prev:hover,
+    .next:hover {
+      opacity: 1;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+    header {
+background-color: #c11a6d;
+padding: 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-family: cursive;
+font-size: 25px;
+font-weight: bold;
+}
+
+header ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+display: flex;
+align-items: center;
+}
+
+header ul li {
+margin-right: 20px;
+}
+
+header ul li:last-child {
+margin-right: 0;
+margin-left: auto;
+}
+
+header ul li a {
+text-decoration: none;
+color: yellow;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #c11a6d;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+.dropdown-content a {
+color: yellow;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown:hover .dropbtn,
+.dropdown-content a:hover {
+color: rgb(255, 165, 0);
+}
+/* CSS pour la mise en page spécifique */
+.center {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+  </style>
+
+  <script>
+    function scrollImages(cardElement, direction) {
+      var imageElement = cardElement.querySelector('img');
+      var currentIndex = parseInt(imageElement.dataset.index);
+      var images = imageElement.dataset.images.split(',');
+
+      if (direction === 'prev') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+      } else if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % images.length;
+      }
+
+      imageElement.src = images[currentIndex];
+      imageElement.dataset.index = currentIndex.toString();
+    }
+  </script>
+</head>
+<body>
+    <header>
+        <nav>
+        <ul>
+        <li><a href="#">Accueil</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropbtn">Sacs</a>
+        <div class="dropdown-content">
+        <a href="#">Besaces</a>
+        <a href="#">Cabas</a>
+        <a href="#">Sacs à main</a>
+        <a href="#">Pochettes</a>
+        <a href="#">Sacs à gâteaux</a>
+        </div>
+        </li>
+        <li class="dropdown">
+        <a href="#" class="dropbtn">Trousses</a>
+        <div class="dropdown-content">
+        <a href="#">Petites trousses</a>
+        <a href="#">Trousses de toilette</a>
+        </div>
+        </li>
+        <li class="right"><a href="#">Prochaines ventes</a></li>
+        </ul>
+        </nav>
+        </header>
+  <h1> Mes sacs cabas enduits</h1>
+  <div class="container">
+    <div class="card">
+      <img src="C:\Users\1s4ni\Downloads\cabas_enduit1.png" alt="Sac cabas 1" data-images="C:\Users\1s4ni\Downloads\cabas_enduit1bis.png,C:\Users\1s4ni\Downloads\cabas_enduit1.png" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <!-- Ajoutez ici d'autres cartes pour les autres sacs cabas -->
+    <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit2.jpg" alt="Sac cabas 2">
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit3.jpg" alt="Sac cabas 3">
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit4.jpg" alt="Sac cabas 3">
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit6.jpg" alt="Sac cabas 3">
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit5.jpg" alt="Sac cabas 3">
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit7.jpg" alt="Sac cabas 3">
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit8.jpg" alt="Sac cabas 8" data-images="C:\Users\1s4ni\Downloads\cabas_enduit8bis.jpg,C:\Users\1s4ni\Downloads\cabas_enduit8.jpg" data-index="0">
+        <div class="dropdown">
+        </div>
+        <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+        <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+      </div>
+      <div class="card">
+        <img src="C:\Users\1s4ni\Downloads\cabas_enduit9.jpg" alt="Sac cabas 3">
+      </div>
+  </div>
+</body>
+</html>
