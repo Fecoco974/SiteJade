@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: beige;
+    }
+
+    h1 {
+      text-align: center;
+      font-family: cursive;
+      font-size: 40px;
+      font-weight: bolder;
+      color: #45073f;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      width: 300px;
+      margin: 25px;
+      padding: 7px;
+      border-radius: 20px;
+      text-align: center;
+      position: relative;
+      background-color: #96a717;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #888888;
+    }
+    
+    .card img {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      margin-bottom: -5px;
+      border-radius: 5px;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ccc;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .prev:hover,
+    .next:hover {
+      opacity: 1;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    header {
+      background-color: rgb(234, 158, 232);
+      padding: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: cursive;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    header ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    header ul li {
+      margin-right: 20px;
+    }
+
+    header ul li:last-child {
+      margin-right: 0;
+      margin-left: auto;
+    }
+
+    header ul li a {
+      text-decoration: none;
+      color: #590951;
+    }
+
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #96a717;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+display: block;
+}
+
+.dropdown-content a {
+color: #45073f;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown:hover .dropbtn,
+.dropdown-content a:hover {
+color: yellow;
+}
+
+.center {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.background {
+    position: relative;
+    z-index: 0;
+}
+
+.background:before,
+.background:after {
+    content: "";
+    position: absolute;
+    width: 105px;
+    height: 160px;
+    z-index: -1;
+}
+
+.background:after {
+    background: url('carte2.png') ;
+    transform: rotate(-30deg);
+    top: 5%;
+    left: 2%;
+    background-size: 100%;
+}
+
+
+.background:before {
+    background: url('carte1.png');
+    transform: rotate(30deg);
+    top: -4%;
+    left: 2%;
+    background-size: 100%;
+}
+
+.banner {
+      background-image: url("/home/cytech/Desktop/devWeb/site/images besaces/champs.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 45px;
+      font-family: cursive;
+      font-size: 40px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+    
+  </style>
+
+  <script>
+    function scrollImages(cardElement, direction) {
+      var imageElement = cardElement.querySelector('img');
+      var currentIndex = parseInt(imageElement.dataset.index);
+      var images = imageElement.dataset.images.split(',');
+
+      if (direction === 'prev') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+      } else if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % images.length;
+      }
+
+      imageElement.src = images[currentIndex];
+      imageElement.dataset.index = currentIndex.toString();
+    }
+  </script>
+</head>
+<body>
+  <div class="banner">
+    <!-- Votre bandeau fin avec l'image -->
+  </div>
+    <header>
+        <nav>
+        <ul>
+        <li><a href="#">Accueil</a></li>
+        <li class="dropdown">
+        <a href="#" class="dropbtn">Sacs</a>
+        <div class="dropdown-content">
+          <a href="images besaces/besaces.html">Besaces</a>
+          <a href="images cabas/cabas_enduits.html">Cabas</a>
+          <a href="images sacs à main/sacs_a_main.html">Sacs à main</a>
+          <a href="images pochettes/pochettes.html">Pochettes</a>
+          <a href="#">Sacs à gâteaux</a>
+          <a href="#">Panières</a>
+        </div>
+        </li>
+        <li class="dropdown">
+        <a href="#" class="dropbtn">Trousses</a>
+        <div class="dropdown-content">
+        <a href="#">Petites trousses</a>
+        <a href="#">Trousses de toilette</a>
+        </div>
+        </li>
+        <li class="right"><a href="#">Prochaines ventes</a></li>
+        </ul>
+        </nav>
+        </header>
+
+  <h1> Les besaces Merlingo</h1>
+  <div class="background">
+  <div class="container">
+    <div class="card">
+      <img src="besace8.jpg" alt="besace 8" data-images="besace8.jpg,besace8bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace2.png" alt="besace 2" data-images="besace2.png,besace2bis.png" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace3.jpg" alt="besace 3" data-images="besace3.jpg,besace3bis.jpg,besace3ter.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace4.jpg" alt="besace 4" data-images="besace4.jpg,besace4bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace5.jpg" alt="besace 5" data-images="besace5.jpg,besace5bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace9.jpg" alt="besace 9" data-images="besace9.jpg,besace9bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace7.jpg" alt="besace 7" data-images="besace7.jpg,besace7bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace14.jpg" alt="besace14">
+    </div>
+    <div class="card">
+      <img src="besace10.jpg" alt="besace10">
+    </div>
+    <div class="card">
+      <img src="besace11.jpg" alt="besace11">
+    </div>
+    <div class="card">
+      <img src="besace6.jpg" alt="besace 6" data-images="besace6.jpg,besace6bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace12.jpg" alt="besace 12" data-images="besace12.jpg,besace12bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+    <div class="card">
+      <img src="besace13.jpg" alt="besace13">
+    </div>
+    <div class="card">
+      <img src="besace1.jpg" alt="besace 1" data-images="besace1.jpg,besace1bis.jpg" data-index="0">
+      <div class="dropdown">
+      </div>
+      <div class="prev" onclick="scrollImages(this.parentNode, 'prev')">◀</div>
+      <div class="next" onclick="scrollImages(this.parentNode, 'next')">▶</div>
+    </div>
+  </div>
+
+</body>
+</html>
